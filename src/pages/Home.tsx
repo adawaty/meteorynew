@@ -8,61 +8,106 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award, Shield, Zap } from "lucide-react";
 
 export default function Home() {
   const { t, dir } = useLanguage();
 
   return (
-    <div dir={dir} className="min-h-screen bg-background font-body overflow-x-hidden noise-overlay">
-      <div className="gradient-orb-1" />
-      <div className="gradient-orb-2" />
+    <div dir={dir} className="min-h-screen bg-background font-body overflow-x-hidden">
       <Navbar />
       <Hero />
       <Distributors />
       
-      {/* Home Page uses simplified versions or call-to-actions to full pages */}
-      
-      {/* About Teaser */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-accent font-bold uppercase tracking-widest mb-2">{t.home.about_teaser_subtitle}</div>
-            <h2 className="text-4xl font-bold mb-6 gradient-text">{t.home.about_teaser_title}</h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              {t.home.about_teaser_desc}
-            </p>
-            <Link href="/about">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white font-bold">
-                {t.home.read_more}
-              </Button>
-            </Link>
-          </div>
-          <div className="glass-card p-8 rounded-2xl relative hover-lift">
-             <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
-             <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
-                   <div className="text-3xl font-bold text-primary mb-1">15+</div>
-                   <div className="text-xs text-muted-foreground uppercase">{t.home.stats_exp}</div>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
-                   <div className="text-3xl font-bold text-primary mb-1">500+</div>
-                   <div className="text-xs text-muted-foreground uppercase">{t.home.stats_clients}</div>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
-                   <div className="text-3xl font-bold text-primary mb-1">1k+</div>
-                   <div className="text-xs text-muted-foreground uppercase">{t.home.stats_projects}</div>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
-                   <div className="text-3xl font-bold text-primary mb-1">100%</div>
-                   <div className="text-xs text-muted-foreground uppercase">{t.home.stats_success}</div>
-                </div>
-             </div>
+      {/* Heritage & Trust Section */}
+      <section className="py-24 bg-gradient-to-b from-background to-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Heritage Content */}
+            <div className="fade-in">
+              <div className="heritage-badge mb-6">
+                ⭐ Established 1979 — 45+ Years of Excellence
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight">
+                A Legacy of Fire Safety Innovation
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                {t.home.about_teaser_desc}
+              </p>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                For over four decades, we have been the trusted partner for fire safety solutions across Egypt and the Middle East. Our commitment to excellence, innovation, and customer satisfaction remains unwavering.
+              </p>
+              <Link href="/about">
+                <Button className="btn-professional">
+                  {t.home.read_more} <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Certifications & Trust Indicators */}
+            <div className="grid grid-cols-2 gap-6 slide-up">
+              {/* LBCP Certification */}
+              <div className="cert-badge">
+                <div className="cert-badge-icon">🏆</div>
+                <div className="cert-badge-title">LBCP Certified</div>
+                <div className="text-xs text-muted-foreground mt-2">Life Safety Code Compliance</div>
+              </div>
+
+              {/* ISO Certification */}
+              <div className="cert-badge">
+                <div className="cert-badge-icon">✓</div>
+                <div className="cert-badge-title">ISO Certified</div>
+                <div className="text-xs text-muted-foreground mt-2">Quality Management</div>
+              </div>
+
+              {/* Experience */}
+              <div className="cert-badge">
+                <div className="cert-badge-icon">45+</div>
+                <div className="cert-badge-title">Years</div>
+                <div className="text-xs text-muted-foreground mt-2">Industry Experience</div>
+              </div>
+
+              {/* Global Trust */}
+              <div className="cert-badge">
+                <div className="cert-badge-icon">🌍</div>
+                <div className="cert-badge-title">Global Partner</div>
+                <div className="text-xs text-muted-foreground mt-2">Trusted Worldwide</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Teaser - Reuse component but could be simplified */}
+      {/* Trust Indicators */}
+      <section className="py-16 bg-background border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="trust-indicator">
+              <Shield className="w-5 h-5 trust-indicator-icon" />
+              <div>
+                <div className="font-bold">Advanced Manufacturing</div>
+                <div className="text-xs opacity-75">Facility in Egypt</div>
+              </div>
+            </div>
+            <div className="trust-indicator">
+              <Award className="w-5 h-5 trust-indicator-icon" />
+              <div>
+                <div className="font-bold">Global Partnerships</div>
+                <div className="text-xs opacity-75">With Leading Labs</div>
+              </div>
+            </div>
+            <div className="trust-indicator">
+              <Zap className="w-5 h-5 trust-indicator-icon" />
+              <div>
+                <div className="font-bold">Integrated Solutions</div>
+                <div className="text-xs opacity-75">Complete Fire Safety</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Teaser */}
       <Services />
 
       {/* Projects Teaser */}
@@ -70,7 +115,7 @@ export default function Home() {
         <Projects />
         <div className="text-center pb-20">
           <Link href="/projects">
-            <Button className="bg-primary hover:bg-primary/90 text-white font-bold h-12 px-8">
+            <Button className="btn-professional">
               {t.home.view_all_projects} <ArrowRight className={dir === 'rtl' ? "rotate-180 mr-2" : "ml-2"} />
             </Button>
           </Link>

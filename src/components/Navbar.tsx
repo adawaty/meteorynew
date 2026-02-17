@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const { t, language, setLanguage, dir } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full",
+        "fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full",
         scrolled || !isHome ? "bg-white/95 backdrop-blur-md shadow-md py-2 dark:bg-background/95" : "bg-transparent py-6"
       )}
     >
@@ -101,29 +102,30 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <Sheet>
+        <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="lg:hidden text-primary">
+            <Button variant="ghost" size="icon" className="lg:hidden text-primary relative z-40">
               <Menu className={cn("h-6 w-6", (scrolled || !isHome) ? "text-foreground" : "text-white")} />
             </Button>
           </SheetTrigger>
-          <SheetContent side={dir === 'rtl' ? 'right' : 'left'}>
+          <SheetContent side={dir === 'rtl' ? 'right' : 'left'} className="z-50">
             <div className="flex flex-col gap-6 mt-10">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
                   href={link.href}
+                  onClick={() => setMenuOpen(false)}
                   className="text-lg font-medium hover:text-accent"
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="h-px bg-border my-2" />
-              <Button variant="outline" onClick={toggleLang} className="justify-start gap-2">
+              <Button variant="outline" onClick={() => { toggleLang(); setMenuOpen(false); }} className="justify-start gap-2">
                 <Globe className="h-4 w-4" />
                 {language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
               </Button>
-              <Link href="/contact">
+              <Link href="/contact" onClick={() => setMenuOpen(false)}>
                 <Button className="bg-accent text-white justify-start gap-2 w-full">
                   <Phone className="h-4 w-4" />
                   {t.nav.quote}
