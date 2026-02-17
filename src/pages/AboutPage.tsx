@@ -6,7 +6,9 @@ export default function AboutPage() {
   const { t, dir } = useLanguage();
 
   return (
-    <div dir={dir} className="min-h-screen bg-background font-body flex flex-col">
+    <div dir={dir} className="min-h-screen bg-background font-body flex flex-col noise-overlay">
+      <div className="gradient-orb-1" />
+      <div className="gradient-orb-2" />
       <Navbar />
       <main className="flex-grow pt-24">
         <div className="bg-secondary/30 py-12 mb-16">
@@ -20,7 +22,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div>
               <div className="text-accent font-bold uppercase tracking-widest mb-2">{t.home.about_teaser_subtitle}</div>
-              <h2 className="text-4xl font-bold mb-6 text-primary">{t.home.about_teaser_title}</h2>
+              <h2 className="text-4xl font-bold mb-6 gradient-text">{t.home.about_teaser_title}</h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                 {t.home.about_teaser_desc}
               </p>
@@ -37,7 +39,7 @@ export default function AboutPage() {
             </div>
             
             <div className="space-y-8">
-               <div className="bg-secondary p-8 rounded-2xl relative overflow-hidden">
+               <div className="glass-card p-8 rounded-2xl relative overflow-hidden hover-lift">
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
                   <h3 className="text-2xl font-bold text-primary mb-6">{t.about.values_title}</h3>
                   <div className="space-y-6">
@@ -56,7 +58,7 @@ export default function AboutPage() {
                   </div>
                </div>
                
-               <div className="bg-primary text-white p-8 rounded-2xl">
+               <div className="bg-primary text-white p-8 rounded-2xl hover-lift ambient-glow">
                    <h3 className="text-2xl font-bold mb-4">{t.about.consulting.title}</h3>
                    <p className="mb-6 opacity-90">{t.about.consulting.desc}</p>
                    <a href="/contact" className="inline-block bg-accent hover:bg-accent/90 text-white font-bold py-3 px-8 rounded transition-colors">

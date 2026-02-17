@@ -7,7 +7,9 @@ export default function ServicesPage() {
   const { t, dir } = useLanguage();
 
   return (
-    <div dir={dir} className="min-h-screen bg-background font-body flex flex-col">
+    <div dir={dir} className="min-h-screen bg-background font-body flex flex-col noise-overlay">
+      <div className="gradient-orb-1" />
+      <div className="gradient-orb-2" />
       <Navbar />
       <main className="flex-grow pt-24">
         {/* Header */}

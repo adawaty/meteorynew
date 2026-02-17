@@ -14,7 +14,9 @@ export default function Home() {
   const { t, dir } = useLanguage();
 
   return (
-    <div dir={dir} className="min-h-screen bg-background font-body overflow-x-hidden">
+    <div dir={dir} className="min-h-screen bg-background font-body overflow-x-hidden noise-overlay">
+      <div className="gradient-orb-1" />
+      <div className="gradient-orb-2" />
       <Navbar />
       <Hero />
       <Distributors />
@@ -26,7 +28,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="text-accent font-bold uppercase tracking-widest mb-2">{t.home.about_teaser_subtitle}</div>
-            <h2 className="text-4xl font-bold mb-6 text-primary">{t.home.about_teaser_title}</h2>
+            <h2 className="text-4xl font-bold mb-6 gradient-text">{t.home.about_teaser_title}</h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
               {t.home.about_teaser_desc}
             </p>
@@ -36,22 +38,22 @@ export default function Home() {
               </Button>
             </Link>
           </div>
-          <div className="bg-secondary p-8 rounded-2xl relative">
+          <div className="glass-card p-8 rounded-2xl relative hover-lift">
              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
                    <div className="text-3xl font-bold text-primary mb-1">15+</div>
                    <div className="text-xs text-muted-foreground uppercase">{t.home.stats_exp}</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
                    <div className="text-3xl font-bold text-primary mb-1">500+</div>
                    <div className="text-xs text-muted-foreground uppercase">{t.home.stats_clients}</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
                    <div className="text-3xl font-bold text-primary mb-1">1k+</div>
                    <div className="text-xs text-muted-foreground uppercase">{t.home.stats_projects}</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm hover-lift ambient-glow">
                    <div className="text-3xl font-bold text-primary mb-1">100%</div>
                    <div className="text-xs text-muted-foreground uppercase">{t.home.stats_success}</div>
                 </div>
